@@ -16,19 +16,20 @@ User.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    username: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      validate: { len: [3] },
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        isEmail: true,
-      },
+      validate: { isEmail: true },
     },
     password: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [8],
-      },
+      validate: { len: [8] },
     },
   },
   {
