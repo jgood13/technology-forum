@@ -17,14 +17,8 @@ User.init(
       autoIncrement: true,
     },
     username: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      validate: { len: [3] },
-    },
-    email: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: { isEmail: true },
     },
     password: {
       type: DataTypes.STRING,
@@ -46,5 +40,6 @@ User.init(
     modelName: "user",
   }
 );
+
 
 module.exports = User;
