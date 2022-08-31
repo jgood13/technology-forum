@@ -9,20 +9,37 @@ const withAuth = require('../utils/auth')
 
 router.get('/', async (req,res) => {
   try {
-    const postData = await Post.findAll({include: {model: User}})
+    const postData = await Post.findAll({include: {model: User, attributes: ['username']}})
     console.log(postData)
-    if (!postData) {
-      res.status(404).json({ message: "no posts." });
-    }
     const posts = postData.map((aPost) => aPost.get({plain:true}))
     // const posts = postData.get({plain:true})
-    res.render('homepage', posts,{
+    res.render('homepage', { posts,
       logged_in: req.session.logged_in
     })
   } catch (err) {
     console.log(err)
     res.status(500).json(err)}
 })
+
+router.get("/post/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      include: {
+        model: Comment,
+      },
+    });
+
+    const newPost = postData.map(aPost => aPost.get({ plain: true }));
+
+    res.render("single-post", {
+      newPost,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 router.get('/login', (req,res) => {
   if (req.session.logged_in) {
