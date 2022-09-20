@@ -2,22 +2,22 @@ const { Comment } = require("../models");
 
 const commentData = [
   {
-    comment: "I agree!",
+    comment_info: "I agree!",
     user_id: 3,
     post_id: 1,
   },
   {
-    comment: "So true!",
+    comment_info: "So true!",
     user_id: 4,
     post_id: 2,
   },
   {
-    comment: "What is your favorite part?",
+    comment_info: "What is your favorite part?",
     user_id: 4,
     post_id: 1,
   },
   {
-    comment: "ORM is the best!",
+    comment_info: "ORM is the best!",
     user_id: 4,
     post_id: 2,
   },

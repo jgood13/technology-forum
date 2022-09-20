@@ -1,11 +1,21 @@
-{{> post-card }}
+{{> post-card}}
 
 {{#if logged_in}}
+
+<form>
+  <div class="row form-group">
+    <label for="exampleFormControlTextarea1">Please leave a comment</label>
+    <textarea class="form-control" id="commentInfo" rows="3"></textarea>
+  </div>
+  <button onclick="newCommentHandler()" id="stayHere"  data-name="{{id}}" type="submit" class="btn mb-2"> Submit</button>
+</form>
 
 {{/if}}
 
+{{#each comments as |comment|}}
 {{> comment-info}}
+{{/each}}
 
 {{#if logged_in}}
-
+<script src="/js/comment.js"></script>
 {{/if}}

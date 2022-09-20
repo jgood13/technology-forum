@@ -15,22 +15,19 @@
       <header>
 
         <nav>
-            <div class="navbar">
-              {{#if logged_in}}
+          <div class="navbar">
+            {{#if logged_in}}
               <a class="" href="/dashboard">Dashboard</a>
-              <a class="" href="/homepage">Home</a>
-              <button
-                class=""
-                onclick="logout()"
-                id="logout"
-              >Logout</button>
-              {{else}}
+              <a class="" href="/">Home</a>
+              <button class="" onclick="logout()" id="logout">Logout</button>
+            {{else}}
               <a class="" href="/login">Dashboard</a>
-              <a class="" href="/homepage">Home</a>
+              <a class="" href="/">Home</a>
               <a class="" href="/login">Login</a>
-              {{/if}}
-            </div>
-            <h1 class="display-2 ml-1 d-flex justify-content-center">Technology Forum</h1>
+            {{/if}}
+          </div>
+          <h1 class="display-2 ml-1 d-flex justify-content-center">Technology
+            Forum</h1>
         </nav>
       </header>
       <main class="container">
@@ -40,6 +37,7 @@
 
   </body>
 
-
-  <script src="/js/logout"></script>
+  {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+  {{/if}}
 </html>
