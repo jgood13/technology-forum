@@ -2,7 +2,7 @@
 
 ## Description
 
-This technology forum uses a Model View Controller method of creating an app where you are required to create a username and password and sign in before you are able to create your own posts, comment on other posts, edit posts, or delete posts
+This technology forum uses a Model View Controller method of creating an app where you are required to create a username and password and sign in before you are able to create your own posts, comment on other posts, edit posts, or delete posts. Passwords are encrypted. And inactivity will cause a logout.
 
 ## Technologies Used
 
