@@ -1,9 +1,14 @@
-  <div class="card">
-  <div class="card-header bg-dark text-white">
-    <a class="h5" href="posts/{{id}}">{{title}}</a>
-    <label>Posted by {{user.username}} on {{format_date createdAt}}</label>
+<div class="card">
+  <div
+    class="card-header bg-dark text-white d-flex justify-content-between p-2"
+  >
+    <a class="postTitle btn text-white" href="posts/{{id}}">{{title}}</a>
+    <label class="justify-content-right postedBy">Posted by
+      {{user.username}}
+      on
+      {{format_date createdAt}}</label>
   </div>
-  <div class="card-body">
+  <div class="card-body bg1">
     <p class="card-text">{{description}}</p>
   </div>
 </div>

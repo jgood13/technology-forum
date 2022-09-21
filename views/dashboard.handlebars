@@ -1,9 +1,9 @@
-
+<h1 class="border-bottom">My Posts</h1>
 {{#if posts.length}}
 {{#each posts}}
-<div class="card">
-  <div class="card-header">
-    <a href="/edit/{{id}}">{{title}}</a>
+<div class="card mt-3">
+  <div class="card-header d-flex flex-row justify-content-between bg-dark text-white">
+    <a class="h3 btn text-white" href="/edit/{{id}}">{{title}}</a>
     <p>{{format_date createdAt}}</p>
   </div>
 </div>
@@ -11,20 +11,22 @@
 {{/if}}
 
  <form  style="display:none" id="postForm" class="form">
+  <div class="d-flex flex-column">
     <div class="form-group">
-      <label for="title"> Title: </label>
+      <label class="h5 mt-5" for="title"> Title: </label>
       <input class="form-input" type="text" id="postTitle" />
     </div>
-    <div class="formgroup">
-      <label for="content"> Content: </label>
+    <div class="formgroup mt-4">
+      <label class="h5 align-items-start" for="content"> Content: </label>
       <textarea data-name="{{user_id}}" rows="3" class="form-input" type="text" id="postContent" />
       </textarea>
     </div>
     
       <button onclick="newPostHandler()" class="btn btn-primary" type="submit">Submit Post</button>
+    </div>
 </div>
  </form>
-
-<button class=" justify-content-center" onclick="showCreatePost()">+ Create Post</button>
-
+<div class="d-flex flex-row">
+<button class="align-self-center centerBtn" onclick="showCreatePost()">+ Create Post</button>
+</div>
 <script src="/js/dashboard.js"></script>

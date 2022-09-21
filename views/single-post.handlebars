@@ -2,16 +2,17 @@
 
 {{#if logged_in}}
 
-<form>
+<form class="mt-4">
   <div class="row form-group">
-    <label for="exampleFormControlTextarea1">Please leave a comment</label>
+    <label class="h5" for="commentInfo">Please leave a comment</label>
     <textarea class="form-control" id="commentInfo" rows="3"></textarea>
   </div>
-  <button onclick="newCommentHandler()" id="stayHere"  data-name="{{id}}" type="submit" class="btn mb-2"> Submit</button>
+  <button onclick="newCommentHandler()" id="stayHere"  data-name="{{id}}" type="submit" class="btn mb-2 border border-dark rounded"> Submit</button>
 </form>
 
 {{/if}}
 
+<div class="h3 mt-3">Comments:</div>
 {{#each comments as |comment|}}
 {{> comment-info}}
 {{/each}}

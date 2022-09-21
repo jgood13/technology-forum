@@ -1,0 +1,21 @@
+body {
+  background-color: #dbfeb8;
+}
+
+.postedBy {
+  margin-top: 6px;
+}
+
+.postTitle {
+  font-size: large;
+  font-weight: bold;
+}
+
+.centerBtn {
+  margin-left: 48%;
+  margin-top: 1rem;
+}
+
+.bg1 {
+  background-color: #99c2a2;
+}

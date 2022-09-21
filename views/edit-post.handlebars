@@ -15,10 +15,13 @@
       class="form-control"
       id="description"
       rows="3"
-    >{{description}}</textarea>
+      placeholder="{{description}}"
+    ></textarea>
   </div>
-  <button onclick="updatePost()" href="/dashboard"> Update Post</button>
+  <button class="mt-4" onclick="updatePost()" href="/dashboard">
+    Update Post</button>
   <button
+    class="mt-4"
     data-postid="{{id}}"
     id="delete"
     onclick="deletePost()"
