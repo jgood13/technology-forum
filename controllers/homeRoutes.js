@@ -19,35 +19,28 @@ router.get("/", async (req, res) => {
 
 router.get("/dashboard", withAuth, async (req, res) => {
   try {
-    const myPostData = await Post.findAll({
-      where: {
-        user_id: req.session.user_id,
-      },
-      attributes: ["id", "title", "description", "createdAt"],
-      include: [
-        {
-          model: Comment,
-          attributes: [
-            "id",
-            "comment_info",
-            "post_id",
-            "user_id",
-            "created_at",
-          ],
-          include: {
-            model: User,
-            attributes: ["username"],
-          },
-        },
-        {
-          model: User,
-          attributes: ["username"],
-        },
-      ],
+    const userData = await Post.findAll({
+      where: { user_id: req.session.user_id },
     });
-    console.log(myPostData);
-    const myPosts = myPostData.map((aPost) => aPost.get({ plain: true }));
-    res.render("dashboard", { myPosts, logged_in: true });
+    const posts = userData.map((post) => post.get({ plain: true }));
+    res.render("dashboard", { posts });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get("/edit/:id", async (req, res) => {
+  try {
+    const postData = await Post.findByPk(req.params.id, {
+      attributes: ["id", "title", "description"],
+    });
+    console.log(postData);
+    // const newPost = postData.map((aPost) => aPost.get({ plain: true }));
+    const newPost = postData.get({ plain: true });
+
+    res.render("edit-post", {
+      ...newPost,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -66,7 +59,6 @@ router.get("/posts/:id", async (req, res) => {
         { model: User, attributes: ["username"] },
       ],
     });
-
     // const newPost = postData.map((aPost) => aPost.get({ plain: true }));
     const newPost = postData.get({ plain: true });
     console.log(newPost);

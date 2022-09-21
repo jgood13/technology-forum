@@ -26,3 +26,44 @@ const newPostHandler = async (event) => {
     }
   }
 };
+
+const deletePost = async (event) => {
+  // event.preventDefault();
+  const id = document.getElementById("delete").getAttribute("data-postid");
+  console.log(id);
+
+  const response = await fetch(`/api/dashboard/${id}`, {
+    method: "DELETE",
+  });
+
+  if (response.ok) {
+    document.location.replace(`/dashboard`);
+  } else {
+    alert("Failed to delete the post!");
+  }
+};
+
+const updatePost = async (event) => {
+  const title = document.querySelector("#title").value.trim();
+  const description = document.querySelector("#description").value.trim();
+
+  const id = document.getElementById("delete").getAttribute("data-postid");
+
+  const response = await fetch(`/api/dashboard/${id}`, {
+    method: "PUT",
+    body: JSON.stringify({
+      post_id: id,
+      title,
+      description,
+    }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  if (response.ok) {
+    document.location.replace("/dashboard");
+  } else {
+    alert("failed to edit post");
+  }
+};

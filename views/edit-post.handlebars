@@ -1,0 +1,29 @@
+<form>
+  <h1>Edit Post:</h1>
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input
+      type="text"
+      class="form-control"
+      id="title"
+      placeholder="{{title}}"
+    />
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea
+      class="form-control"
+      id="description"
+      rows="3"
+    >{{description}}</textarea>
+  </div>
+  <button onclick="updatePost()" href="/dashboard"> Update Post</button>
+  <button
+    data-postid="{{id}}"
+    id="delete"
+    onclick="deletePost()"
+    href="/dashboard"
+  > Delete Post</button>
+</form>
+
+<script src="/js/dashboard.js"></script>

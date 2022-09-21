@@ -1,5 +1,4 @@
 const newCommentHandler = async (event) => {
-  console.log(document.getElementById("commentInfo").value);
   if (document.getElementById("commentInfo").value) {
     const response = await fetch(`/api/comment`, {
       method: "POST",
@@ -11,6 +10,7 @@ const newCommentHandler = async (event) => {
         "Content-Type": "application/json",
       },
     });
+    console.log("got here");
 
     if (response.ok) {
       document.location.replace(
@@ -20,6 +20,7 @@ const newCommentHandler = async (event) => {
       );
     } else {
       alert("Failed to create event");
+      console.error();
     }
   }
 };
